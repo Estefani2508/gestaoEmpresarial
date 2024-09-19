@@ -57,8 +57,8 @@ model Inventario {
 model Pessoa {
   id          Int    @id @default(autoincrement())
   nome        String
-  cpf         Int
-  telefone    Int
+  cpf         String
+  telefone    String
   email       String
   endereco    String
   tipo_pessoa String
