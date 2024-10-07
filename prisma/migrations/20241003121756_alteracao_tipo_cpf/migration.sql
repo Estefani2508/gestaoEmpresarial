@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `Pessoa` MODIFY `cpf` VARCHAR(191) NOT NULL,
+    MODIFY `telefone` VARCHAR(191) NOT NULL;

@@ -1,47 +1,47 @@
 const express = require('express');
 const router = express.Router();
-const pessoaController = require('../controller/pessoaController');
+const produtoController = require('../controller/produtoController');
 
 /**
  * @swagger
  * tags:
- *   name: Pessoas
- *   description: Gerenciamento de pessoas
+ *   name: Produtos
+ *   description: Gerenciamento de produtos
  */
 
 /**
  * @swagger
- * /pessoas:
+ * /produtos:
  *   get:
- *     summary: Retorna todas as pessoas
- *     tags: [Pessoas]
+ *     summary: Retorna todos os produtos
+ *     tags: [Produtos]
  *     responses:
  *       200:
- *         description: Uma lista de pessoas
+ *         description: Uma lista de produtos
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Pessoa'
+ *                 $ref: '#/components/schemas/Produto'
  */
-router.get('/', pessoaController.getAllPessoa);
+router.get('/', produtoController.getAllProduto);
 
 /**
  * @swagger
- * /pessoas:
+ * /produtos:
  *   post:
- *     summary: Cria uma nova pessoa
- *     tags: [Pessoas]
+ *     summary: Cria um novo produto
+ *     tags: [Produtos]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Pessoa'
+ *             $ref: '#/components/schemas/Produto'
  *     responses:
  *       201:
- *         description: Pessoa criada com sucesso
+ *         description: Produto criado com sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -49,21 +49,21 @@ router.get('/', pessoaController.getAllPessoa);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: 'Pessoa criada com sucesso'
+ *                   example: 'Produto criado com sucesso'
  */
-router.post('/', pessoaController.createPessoa);
+router.post('/', produtoController.createProduto);
 
 /**
  * @swagger
- * /pessoas/{id}:
+ * /produtos/{id}:
  *   put:
- *     summary: Atualiza uma pessoa existente
- *     tags: [Pessoas]
+ *     summary: Atualiza um produto existente
+ *     tags: [Produtos]
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID da pessoa a ser atualizada
+ *         description: ID do produto a ser atualizado
  *         schema:
  *           type: string
  *     requestBody:
@@ -71,10 +71,10 @@ router.post('/', pessoaController.createPessoa);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Pessoa'
+ *             $ref: '#/components/schemas/Produto'
  *     responses:
  *       200:
- *         description: Pessoa atualizada com sucesso
+ *         description: Produto atualizado com sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -82,26 +82,26 @@ router.post('/', pessoaController.createPessoa);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: 'Pessoa atualizada com sucesso'
+ *                   example: 'Produto atualizado com sucesso'
  */
-router.put('/:id', pessoaController.updatePessoa);
+router.put('/:id', produtoController.updateProduto);
 
 /**
  * @swagger
- * /pessoas/{id}:
+ * /produtos/{id}:
  *   delete:
- *     summary: Remove uma pessoa existente
- *     tags: [Pessoas]
+ *     summary: Remove um produto existente
+ *     tags: [Produtos]
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID da pessoa a ser removida
+ *         description: ID do produto a ser removido
  *         schema:
  *           type: string
  *     responses:
  *       200:
- *         description: Pessoa removida com sucesso
+ *         description: Produto removido com sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -109,8 +109,8 @@ router.put('/:id', pessoaController.updatePessoa);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: 'Pessoa removida com sucesso'
+ *                   example: 'Produto removido com sucesso'
  */
-router.delete('/:id', pessoaController.deletePessoa);
+router.delete('/:id', produtoController.deleteProduto);
 
 module.exports = router;

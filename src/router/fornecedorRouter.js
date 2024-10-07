@@ -1,47 +1,47 @@
 const express = require('express');
 const router = express.Router();
-const pessoaController = require('../controller/pessoaController');
+const fornecedorController = require('../controller/fornecedorController');
 
 /**
  * @swagger
  * tags:
- *   name: Pessoas
- *   description: Gerenciamento de pessoas
+ *   name: Fornecedores
+ *   description: Gerenciamento de fornecedores
  */
 
 /**
  * @swagger
- * /pessoas:
+ * /fornecedores:
  *   get:
- *     summary: Retorna todas as pessoas
- *     tags: [Pessoas]
+ *     summary: Retorna todos os fornecedores
+ *     tags: [Fornecedores]
  *     responses:
  *       200:
- *         description: Uma lista de pessoas
+ *         description: Uma lista de fornecedores
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Pessoa'
+ *                 $ref: '#/components/schemas/Fornecedor'
  */
-router.get('/', pessoaController.getAllPessoa);
+router.get('/', fornecedorController.getAllFornecedor);
 
 /**
  * @swagger
- * /pessoas:
+ * /fornecedores:
  *   post:
- *     summary: Cria uma nova pessoa
- *     tags: [Pessoas]
+ *     summary: Cria um novo fornecedor
+ *     tags: [Fornecedores]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Pessoa'
+ *             $ref: '#/components/schemas/Fornecedor'
  *     responses:
  *       201:
- *         description: Pessoa criada com sucesso
+ *         description: Fornecedor criado com sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -49,21 +49,21 @@ router.get('/', pessoaController.getAllPessoa);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: 'Pessoa criada com sucesso'
+ *                   example: 'Fornecedor criado com sucesso'
  */
-router.post('/', pessoaController.createPessoa);
+router.post('/', fornecedorController.createFornecedor);
 
 /**
  * @swagger
- * /pessoas/{id}:
+ * /fornecedores/{id}:
  *   put:
- *     summary: Atualiza uma pessoa existente
- *     tags: [Pessoas]
+ *     summary: Atualiza um fornecedor existente
+ *     tags: [Fornecedores]
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID da pessoa a ser atualizada
+ *         description: ID do fornecedor a ser atualizado
  *         schema:
  *           type: string
  *     requestBody:
@@ -71,10 +71,10 @@ router.post('/', pessoaController.createPessoa);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Pessoa'
+ *             $ref: '#/components/schemas/Fornecedor'
  *     responses:
  *       200:
- *         description: Pessoa atualizada com sucesso
+ *         description: Fornecedor atualizado com sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -82,26 +82,26 @@ router.post('/', pessoaController.createPessoa);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: 'Pessoa atualizada com sucesso'
+ *                   example: 'Fornecedor atualizado com sucesso'
  */
-router.put('/:id', pessoaController.updatePessoa);
+router.put('/:id', fornecedorController.updateFornecedor);
 
 /**
  * @swagger
- * /pessoas/{id}:
+ * /fornecedores/{id}:
  *   delete:
- *     summary: Remove uma pessoa existente
- *     tags: [Pessoas]
+ *     summary: Remove um fornecedor existente
+ *     tags: [Fornecedores]
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID da pessoa a ser removida
+ *         description: ID do fornecedor a ser removido
  *         schema:
  *           type: string
  *     responses:
  *       200:
- *         description: Pessoa removida com sucesso
+ *         description: Fornecedor removido com sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -109,8 +109,8 @@ router.put('/:id', pessoaController.updatePessoa);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: 'Pessoa removida com sucesso'
+ *                   example: 'Fornecedor removido com sucesso'
  */
-router.delete('/:id', pessoaController.deletePessoa);
+router.delete('/:id', fornecedorController.deleteFornecedor);
 
 module.exports = router;

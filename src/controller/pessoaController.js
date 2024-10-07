@@ -24,7 +24,7 @@ exports.createPessoa = async (req, res)=> {
 
 exports.updatePessoa = async (req, res) => {
     const { id } = req.params; // Obtém o ID da pessoa a ser atualizada
-    const { nome, cpf } = req.body; // Obtém os novos dados do corpo da requisição
+    const { nome, cpf, telefone, email, endereco} = req.body; // Obtém os novos dados do corpo da requisição
 
     try {
         const pessoa = await prisma.pessoa.update({
@@ -32,6 +32,9 @@ exports.updatePessoa = async (req, res) => {
             data: {
                 nome,
                 cpf,
+                telefone,
+                email, 
+                endereco,
             },
         });
         res.status(200).json(pessoa); // Retorna a pessoa atualizada
@@ -50,4 +53,4 @@ exports.deletePessoa = async (req, res)=> {
     }catch (error) {
         res.status(400).json({error: error.message })
     }
-}
+}                      

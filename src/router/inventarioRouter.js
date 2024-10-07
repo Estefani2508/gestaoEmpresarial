@@ -1,47 +1,47 @@
 const express = require('express');
 const router = express.Router();
-const pessoaController = require('../controller/pessoaController');
+const inventarioController = require('../controller/inventarioController');
 
 /**
  * @swagger
  * tags:
- *   name: Pessoas
- *   description: Gerenciamento de pessoas
+ *   name: Inventário
+ *   description: Gerenciamento do inventário
  */
 
 /**
  * @swagger
- * /pessoas:
+ * /inventario:
  *   get:
- *     summary: Retorna todas as pessoas
- *     tags: [Pessoas]
+ *     summary: Retorna todos os itens do inventário
+ *     tags: [Inventário]
  *     responses:
  *       200:
- *         description: Uma lista de pessoas
+ *         description: Uma lista de itens do inventário
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Pessoa'
+ *                 $ref: '#/components/schemas/Inventario'
  */
-router.get('/', pessoaController.getAllPessoa);
+router.get('/', inventarioController.getAllInventario);
 
 /**
  * @swagger
- * /pessoas:
+ * /inventario:
  *   post:
- *     summary: Cria uma nova pessoa
- *     tags: [Pessoas]
+ *     summary: Adiciona um novo item ao inventário
+ *     tags: [Inventário]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Pessoa'
+ *             $ref: '#/components/schemas/Inventario'
  *     responses:
  *       201:
- *         description: Pessoa criada com sucesso
+ *         description: Item adicionado ao inventário com sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -49,21 +49,21 @@ router.get('/', pessoaController.getAllPessoa);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: 'Pessoa criada com sucesso'
+ *                   example: 'Item adicionado com sucesso'
  */
-router.post('/', pessoaController.createPessoa);
+router.post('/', inventarioController.createInventario);
 
 /**
  * @swagger
- * /pessoas/{id}:
+ * /inventario/{id}:
  *   put:
- *     summary: Atualiza uma pessoa existente
- *     tags: [Pessoas]
+ *     summary: Atualiza um item existente no inventário
+ *     tags: [Inventário]
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID da pessoa a ser atualizada
+ *         description: ID do item a ser atualizado
  *         schema:
  *           type: string
  *     requestBody:
@@ -71,10 +71,10 @@ router.post('/', pessoaController.createPessoa);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Pessoa'
+ *             $ref: '#/components/schemas/Inventario'
  *     responses:
  *       200:
- *         description: Pessoa atualizada com sucesso
+ *         description: Item atualizado com sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -82,26 +82,26 @@ router.post('/', pessoaController.createPessoa);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: 'Pessoa atualizada com sucesso'
+ *                   example: 'Item atualizado com sucesso'
  */
-router.put('/:id', pessoaController.updatePessoa);
+router.put('/:id', inventarioController.updateInventario);
 
 /**
  * @swagger
- * /pessoas/{id}:
+ * /inventario/{id}:
  *   delete:
- *     summary: Remove uma pessoa existente
- *     tags: [Pessoas]
+ *     summary: Remove um item do inventário
+ *     tags: [Inventário]
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID da pessoa a ser removida
+ *         description: ID do item a ser removido
  *         schema:
  *           type: string
  *     responses:
  *       200:
- *         description: Pessoa removida com sucesso
+ *         description: Item removido com sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -109,8 +109,8 @@ router.put('/:id', pessoaController.updatePessoa);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: 'Pessoa removida com sucesso'
+ *                   example: 'Item removido com sucesso'
  */
-router.delete('/:id', pessoaController.deletePessoa);
+router.delete('/:id', inventarioController.deleteInventario);
 
 module.exports = router;
